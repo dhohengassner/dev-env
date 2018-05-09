@@ -1,0 +1,12 @@
+---
+
+- name: Clone monitoring repository into /home/vagrant/monitoring
+  git:
+    repo: https://github.com/icereed/prometheus.git
+    dest: /home/vagrant/monitoring
+    update: yes
+
+- name: Start docker-compose for monitoring
+  docker_service:
+    project_src: /home/vagrant/monitoring
+    state: present

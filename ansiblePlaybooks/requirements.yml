@@ -1,0 +1,7 @@
+---
+
+- src: angstwad.docker_ubuntu
+- src: secfigo.terraform
+- src: ssilab.aws-cli
+- src: nephelaiio.chefdk
+  version: 1.0.6

@@ -1,0 +1,6 @@
+# Docker - See https://github.com/angstwad/docker.ubuntu/blob/master/defaults/main.yml
+docker_group_members:
+  - vagrant
+terraform_version: "0.11.7"
+
+ansible_cache_dir: /tmp

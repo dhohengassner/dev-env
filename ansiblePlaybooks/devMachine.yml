@@ -1,0 +1,11 @@
+- hosts: all
+  vars_files:
+    - vars.yml
+  roles:
+    - role: angstwad.docker_ubuntu
+    - role: nephelaiio.chefdk
+    - role: secfigo.terraform
+    - role: ssilab.aws-cli
+    - role: monitoring
+    - role: posh-git
+  

@@ -1,0 +1,27 @@
+---
+
+- name: Clone posh-git-sh repository into /home/vagrant/posh-git
+  git:
+    repo: https://github.com/lyze/posh-git-sh.git
+    dest: /home/vagrant/posh-git
+    update: yes
+
+- name: Ensure presence of bash_profile
+  file: state=touch path=/home/vagrant/.bash_profile
+
+- name: Load bashrc in bash_profile
+  lineinfile: dest=/home/vagrant/.bash_profile regexp="\. \$HOME\/\.bashrc" line="[[ -r $HOME/.bashrc ]] && . $HOME/.bashrc"
+
+- name: Ensure presence of bashrc
+  file: state=touch path=/home/vagrant/.bashrc
+
+- name: Ensure bash-completion is installed
+  apt:
+    name: bash-completion
+
+- name: Enable posh-git
+  blockinfile:
+    path: /home/vagrant/.bashrc
+    block: |
+      source /home/vagrant/posh-git/git-prompt.sh
+      PROMPT_COMMAND='__posh_git_ps1 "\u@\h:\w " "\\\$ ";'$PROMPT_COMMAND
